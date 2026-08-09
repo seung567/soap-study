@@ -1,0 +1,11 @@
+spring:
+
+  application:
+    name: demo-soap
+
+logging:
+  level:
+    root: DEBUG
+    sun.rmi.transport.tcp: INFO
+    javax.management.remote.rmi: INFO
+    sun.rmi.loader: INFO
