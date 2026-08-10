@@ -85,60 +85,33 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- 받은 WSDL로부터 JAXB 클래스 생성 -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>3.2.0</version>
+				<groupId>org.jvnet.jaxb</groupId>
+				<artifactId>jaxb-maven-plugin</artifactId>
+				<version>4.0.6</version>
 				<executions>
 					<execution>
-						<id>xjc</id>
 						<goals>
-							<goal>xjc</goal>
+							<goal>generate</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<sources>
-						<source>${project.basedir}/src/main/resources/xsd/country.xsd</source>
-					</sources>
-					<packageName>com.prac.demo_soap.wsdl</packageName>
+					<schemas>
+						<schema>
+							<!-- 로컬 파일 경로 지정 (파일로 이미 받아뒀으므로) -->
+							<fileset>
+								<directory>${project.basedir}/src/main/resources</directory>
+								<includes>
+									<include>country.wsdl</include>
+								</includes>
+							</fileset>
+						</schema>
+					</schemas>
+					<generatePackage>com.example.soapclient.wsdl</generatePackage>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>default-compile</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<configuration>
-							<annotationProcessorPaths>
-								<path>
-									<groupId>org.projectlombok</groupId>
-									<artifactId>lombok</artifactId>
-								</path>
-							</annotationProcessorPaths>
-						</configuration>
-					</execution>
-					<execution>
-						<id>default-testCompile</id>
-						<phase>test-compile</phase>
-						<goals>
-							<goal>testCompile</goal>
-						</goals>
-						<configuration>
-							<annotationProcessorPaths>
-								<path>
-									<groupId>org.projectlombok</groupId>
-									<artifactId>lombok</artifactId>
-								</path>
-							</annotationProcessorPaths>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 
 		</plugins>

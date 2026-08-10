@@ -9,3 +9,7 @@ logging:
     sun.rmi.transport.tcp: INFO
     javax.management.remote.rmi: INFO
     sun.rmi.loader: INFO
+
+
+server:
+  port: 2208

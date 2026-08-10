@@ -23,7 +23,7 @@ public class CountryEndpoint {
         GetCountryResponse response = new GetCountryResponse();
         Country country = new Country();
 
-        country.setName(request.getName());
+        country.setName(request.getName() + "_Success_Process");
         country.setPopulation(51_780_000);
         country.setCapital("Seoul");
         country.setCurrency(Currency.KRW);
